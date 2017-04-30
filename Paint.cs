@@ -23,7 +23,7 @@ namespace Colors
         }
 
         public PigmentColor Color { get; private set; }
-        public List<Paint> Constituents { get; private set; }
+        public IEnumerable<Paint> Constituents { get; private set; }
         public double Volume { get; private set; }
 
         public void MixIn(Paint paint)
