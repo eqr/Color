@@ -3,24 +3,18 @@ namespace Colors
     public class Paint
     {
         public double Volume {get; private set;}
-        public int Red {get; private set;}
-        public int Green {get; private set;}
-        public int Blue {get; private set;}
+        public PigmentColor Color {get; private set;}
 
-        public Paint(double volume, int red, int green, int blue)
+        public Paint(double volume, PigmentColor color)
         {
             this.Volume = volume;
-            this.Red = red;
-            this.Green = green;
-            this.Blue = blue;
+            this.Color = color;
         }
 
         public void Mix(Paint paint)
         {
             this.Volume += paint.Volume;
-            this.Red = (this.Red + paint.Red) / 2;
-            this.Green = (this.Green + paint.Green) / 2;
-            this.Blue = (this.Blue + paint.Blue) / 2;
+            this.Color.MixedWith(paint.Color);
         }
     }
 }
