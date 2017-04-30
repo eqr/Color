@@ -10,26 +10,18 @@ namespace Colors
         public void TestMethod1()
         {
             // Arrange 
-            Paint green = new Paint();
-            green.v = 100.0;
-            green.r = 0;
-            green.g = 50;
-            green.b = 0;
-            Paint blue = new Paint();
-            blue.v = 100.0;
-            blue.r = 0;
-            blue.g = 0;
-            blue.b = 50;
+            Paint green = new Paint(100.0, 0, 50, 0);
+            Paint blue = new Paint(100.0, 0, 0, 50);
 
             // Act
             green.Mix(blue);
 
             // Assert
-            Assert.AreEqual(200.0, green.v, 0.01); 
-            Assert.AreEqual(0, green.r);
+            Assert.AreEqual(200.0, green.volume, 0.01);
+            Assert.AreEqual(0, green.red);
 
-            Assert.AreEqual(25, green.g);
-            Assert.AreEqual(25, green.b);
+            Assert.AreEqual(25, green.green);
+            Assert.AreEqual(25, green.blue);
         }
     }
 }
