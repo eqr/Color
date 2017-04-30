@@ -13,7 +13,7 @@ namespace Colors
             this.Blue = blue;
         }
 
-        public void MixedWith(PigmentColor color)
+        public void MixWith(PigmentColor color)
         {
             this.Red = (this.Red + color.Red) / 2;
             this.Green = (this.Green + color.Green) / 2;
