@@ -2,25 +2,25 @@ namespace Colors
 {
     public class Paint
     {
-        public double volume;
-        public int red;
-        public int green;
-        public int blue;
+        public double Volume {get; private set;}
+        public int Red {get; private set;}
+        public int Green {get; private set;}
+        public int Blue {get; private set;}
 
         public Paint(double volume, int red, int green, int blue)
         {
-            this.volume = volume;
-            this.red = red;
-            this.green = green;
-            this.blue = blue;
+            this.Volume = volume;
+            this.Red = red;
+            this.Green = green;
+            this.Blue = blue;
         }
 
         public void Mix(Paint paint)
         {
-            this.volume += paint.volume;
-            this.red = (this.red + paint.red) / 2;
-            this.green = (this.green + paint.green) / 2;
-            this.blue = (this.blue + paint.blue) / 2;
+            this.Volume += paint.Volume;
+            this.Red = (this.Red + paint.Red) / 2;
+            this.Green = (this.Green + paint.Green) / 2;
+            this.Blue = (this.Blue + paint.Blue) / 2;
         }
     }
 }

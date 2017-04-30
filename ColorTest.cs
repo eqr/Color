@@ -17,11 +17,11 @@ namespace Colors
             green.Mix(blue);
 
             // Assert
-            Assert.AreEqual(200.0, green.volume, 0.01);
-            Assert.AreEqual(0, green.red);
+            Assert.AreEqual(200.0, green.Volume, 0.01);
+            Assert.AreEqual(0, green.Red);
 
-            Assert.AreEqual(25, green.green);
-            Assert.AreEqual(25, green.blue);
+            Assert.AreEqual(25, green.Green);
+            Assert.AreEqual(25, green.Blue);
         }
     }
 }
