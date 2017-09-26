@@ -13,7 +13,7 @@ namespace DDDConcepts
         public Product(Guid id, Price sellingPrice, Price retailPrice, List<Option> options)
         {
             if (sellingPrice.Matches(retailPrice) == false)
-                 throw new Exception("Selling and retail price must be in the same currency");            
+                throw new Exception("Selling and retail price must be in the same currency");
             this.id = id;
             this.sellingPrice = sellingPrice;
             this.retailPrice = retailPrice;
@@ -32,15 +32,28 @@ namespace DDDConcepts
             Price savings = this.retailPrice.Minus(this.sellingPrice);
             if (savings.IsGreaterThanZero())
                 return savings;
-            else 
+            else
                 return new Price(0, this.retailPrice.Currency);
         }
 
-        public void AddOption(Option option) 
+        public void AddOption(Option option)
         {
             if (this.options.Contains(option))
                 throw new ProductAddedOptionNotUnique(this, option);
             this.options.Add(option);
+        }
+
+        public override int GetHashCode()
+        {
+            return this.id.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null) return false;
+            Product otherProduct = obj as Product;
+            if (otherProduct == null) return false;
+            return this.id.Equals(otherProduct.id);
         }
     }
 }

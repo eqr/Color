@@ -5,14 +5,33 @@ namespace DDDConcepts
 {
     public class Price
     {
-        public string Currency { get; set; }
+        private readonly Money money;
 
-        public int Amount { get; set; }
-
-        public Price(int amount, string currency)
+        public Currency Currency
         {
-            this.Amount = amount;
-            this.Currency = currency;
+            get
+            {
+                return this.money.Currency;
+            }
+        }
+
+        public decimal Amount
+        {
+            get
+            {
+                return this.money.Amount;
+            }
+        }
+
+        public Money Money { get { return this.money; } }
+        public Price(decimal amount, Currency currency)
+        {
+            this.money = new Money(amount, currency);
+        }
+
+        public Price(Money money)
+        {
+            this.money = money;
         }
 
         public bool Matches(Price otherPrice)
@@ -20,26 +39,26 @@ namespace DDDConcepts
             return this.Currency.Equals(otherPrice.Currency);
         }
 
-        public Price Minus(Price otherPrice) 
+        public Price Minus(Price otherPrice)
         {
             // TODO check if currencies match, throw exception if not
             // TODO check amounts to see that substraction is valid
-            return new Price(this.Amount - otherPrice.Amount, this.Currency);
+            return new Price(this.money.Substract(otherPrice.Money));
         }
 
-        public bool IsGreaterThanZero() 
+        public bool IsGreaterThanZero()
         {
             return this.Amount > 0;
         }
 
     }
 
-    public class ProductAddedOptionNotUnique : Exception 
+    public class ProductAddedOptionNotUnique : Exception
     {
         private readonly Product product;
         private readonly Option option;
 
-        public ProductAddedOptionNotUnique(Product product, Option option) 
+        public ProductAddedOptionNotUnique(Product product, Option option)
         {
             this.product = product;
             this.option = option;
@@ -49,5 +68,62 @@ namespace DDDConcepts
     public class Option
     {
 
+    }
+
+    public class Currency
+    {
+        public Currency(string name)
+        {
+            this.Name = name;
+        }
+        public string Name { get; set; }
+    }
+
+    internal class NonMatchingCurrencyException : Exception
+    {
+        private Money money;
+        private Money moneyToAdd;
+
+        public NonMatchingCurrencyException()
+        {
+        }
+
+        public NonMatchingCurrencyException(string message) : base(message)
+        {
+        }
+
+        public NonMatchingCurrencyException(Money money, Money moneyToAdd)
+        {
+            this.money = money;
+            this.moneyToAdd = moneyToAdd;
+        }
+
+        public NonMatchingCurrencyException(string message, Exception innerException) : base(message, innerException)
+        {
+        }
+    }
+
+    internal class CanNotRemoveMoreMoneyThanHaveException : Exception
+    {
+        private Money money;
+        private Money moneyToRemove;
+
+        public CanNotRemoveMoreMoneyThanHaveException()
+        {
+        }
+
+        public CanNotRemoveMoreMoneyThanHaveException(string message) : base(message)
+        {
+        }
+
+        public CanNotRemoveMoreMoneyThanHaveException(Money money, Money moneyToRemove)
+        {
+            this.money = money;
+            this.moneyToRemove = moneyToRemove;
+        }
+
+        public CanNotRemoveMoreMoneyThanHaveException(string message, Exception innerException) : base(message, innerException)
+        {
+        }
     }
 }
