@@ -126,4 +126,38 @@ namespace DDDConcepts
         {
         }
     }
+
+    public class Consignment
+    {
+        internal object ConsignmentWeight()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class WeightInKg
+    {
+        private decimal v;
+
+        public WeightInKg(decimal v)
+        {
+            this.v = v;
+        }
+
+        internal WeightInKg Add(object p)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class WeightBand
+    {
+        public Lazy<object> ForConsignmentsUpToThisWeightInKg { get; internal set; }
+        public Money Price { get; internal set; }
+
+        internal bool IsWithinBand(WeightInKg weight)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
