@@ -21,7 +21,7 @@ namespace DDDConcepts
             return new Money(this.Amount + moneyToAdd.Amount, this.Currency);
         }
 
-        public Money Remove(Money moneyToRemove)
+        public Money Substract(Money moneyToRemove)
         {
             if (this.Currency.Equals(moneyToRemove.Currency) == false)
                 throw new NonMatchingCurrencyException(this, moneyToRemove);
