@@ -5,10 +5,12 @@ namespace DDDConcepts
 {
     public class Product
     {
-        private Guid id;
+        private readonly Guid id;
         private Price sellingPrice;
-        private Price retailPrice;
-        private List<Option> options;
+        private readonly Price retailPrice;
+        private readonly List<Option> options;
+
+        public Guid Id { get { return this.id; } }
 
         public Product(Guid id, Price sellingPrice, Price retailPrice, List<Option> options)
         {

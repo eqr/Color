@@ -1,5 +1,7 @@
 // Only utility stuff, not consider as a good example
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace DDDConcepts
 {
@@ -159,5 +161,60 @@ namespace DDDConcepts
         {
             throw new NotImplementedException();
         }
+    }
+
+    public class Guid
+    {
+    }
+
+    public class BasketItems : ICollection<Product>
+    {
+        public int Count => throw new NotImplementedException();
+
+        public bool IsReadOnly => throw new NotImplementedException();
+
+        public void Add(Product item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Clear()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Contains(Product item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CopyTo(Product[] array, int arrayIndex)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerator<Product> GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Remove(Product item)
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Guid> GetItemIds() {
+            foreach(var item in this) 
+                yield return item.Id;
+        }
+    }  
+
+    public interface IRecommendationService {
+        void UpdateSuggestionsFor(Guid busketId, IEnumerable<Guid> itemIds);
     }
 }

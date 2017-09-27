@@ -19,8 +19,7 @@ namespace DDDConcepts
             // Reverse sort list
             _weightBand = _weightBand.OrderBy(x => x.ForConsignmentsUpToThisWeightInKg.Value);
             // Get first match
-            var weightBand = _weightBand.FirstOrDefault(x =>
-            x.IsWithinBand(weight));
+            var weightBand = _weightBand.FirstOrDefault(x => x.IsWithinBand(weight));
             return weightBand.Price;
         }
         private WeightInKg GetTotalWeight(IEnumerable<Consignment> consignments)
