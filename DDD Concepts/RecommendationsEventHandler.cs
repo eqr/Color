@@ -9,7 +9,8 @@ namespace DDDConcepts
             this.recommendationService = recommendationService;
         }
 
-        public void Handle(ProductAddedToBasket event) {
+        public void Handle(ProductAddedToBasket event) 
+        {
             this.recommendationService.UpdateSuggestionsFor(event.BasketId, event.Items);
         }
     }

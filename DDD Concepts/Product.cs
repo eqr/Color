@@ -15,7 +15,8 @@ namespace DDDConcepts
         public Product(Guid id, Price sellingPrice, Price retailPrice, List<Option> options)
         {
             if (sellingPrice.Matches(retailPrice) == false)
-                throw new Exception("Selling and retail price must be in the same currency");
+                throw new 
+                Exception("Selling and retail price must be in the same currency");
             this.id = id;
             this.sellingPrice = sellingPrice;
             this.retailPrice = retailPrice;

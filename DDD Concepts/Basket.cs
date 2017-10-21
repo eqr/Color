@@ -16,7 +16,8 @@ namespace DDDConcepts
         public void AddItem(Product product)
         {
             this.items.Add(product);
-            DomainEvents.Raise(new ProductAddedToBasket(this.id, this.items.GetItemIds()));
+            DomainEvents.Raise(
+                new ProductAddedToBasket(this.id, this.items.GetItemIds()));
         }
     }
 
